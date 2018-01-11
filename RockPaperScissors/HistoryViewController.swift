@@ -13,6 +13,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var history : [RPSMatch]!
     
+    @IBOutlet weak var dismissButton: UIBarButtonItem!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return history.count

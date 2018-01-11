@@ -24,6 +24,7 @@ class RockPaperScissorsViewController: UIViewController {
     @IBOutlet weak var rockButton: UIButton!
     @IBOutlet weak var paperButton: UIButton!
     @IBOutlet weak var scissorsButton: UIButton!
+    @IBOutlet weak var historyButton: UIButton!
     
     // MARK: Actions
     
@@ -47,7 +48,12 @@ class RockPaperScissorsViewController: UIViewController {
     
 
     @IBAction func showHistory(_ sender: Any) {
-         performSegue(withIdentifier: "toHistory", sender: self)
+        let storyboard = self.storyboard
+        let controller = storyboard?.instantiateViewController(withIdentifier: "HistoryViewController")as! HistoryViewController
+        
+        controller.history = self.history
+        
+        self.present(controller, animated: true, completion: nil)
     }
     
     // MARK: Play!
@@ -82,6 +88,9 @@ class RockPaperScissorsViewController: UIViewController {
         
         // 3rd Way: Segue Only, No code!
         // But don't forget to implement prepareForSegue.
+        else if (playersMove == RPS.scissors) {
+            performSegue(withIdentifier: "throwDownScissors", sender: self)
+        }
     }
 
     // MARK: Segue
